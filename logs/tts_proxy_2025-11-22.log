@@ -1306,3 +1306,11 @@
 2025-11-22 15:01:06 | INFO     | app.main:lifespan:30 - TTS Proxy 关闭中...
 2025-11-22 15:01:06 | INFO     | app.services.doubao_client:close:190 - 豆包HTTP客户端已关闭
 2025-11-22 15:01:06 | INFO     | app.main:lifespan:32 - TTS Proxy 已关闭
+2025-11-22 15:34:19 | INFO     | app.main:lifespan:21 - ==================================================
+2025-11-22 15:34:19 | INFO     | app.main:lifespan:22 - TTS Proxy 启动中...
+2025-11-22 15:34:19 | INFO     | app.main:lifespan:23 - 服务地址: 0.0.0.0:9001
+2025-11-22 15:34:19 | INFO     | app.main:lifespan:24 - 日志级别: DEBUG
+2025-11-22 15:34:19 | INFO     | app.main:lifespan:25 - API文档: http://0.0.0.0:9001/docs
+2025-11-22 15:34:19 | INFO     | app.main:lifespan:26 - ==================================================
+2025-11-22 15:36:07 | INFO     | app.main:lifespan:30 - TTS Proxy 关闭中...
+2025-11-22 15:36:07 | INFO     | app.main:lifespan:32 - TTS Proxy 已关闭

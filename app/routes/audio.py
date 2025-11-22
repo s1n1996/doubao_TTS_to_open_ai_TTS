@@ -14,14 +14,103 @@ from app.middleware.auth import verify_api_key
 router = APIRouter(prefix="/v1/audio", tags=["Audio"])
 
 
-@router.post("/speech")
+@router.post(
+    "/speech",
+    summary="生成语音",
+    description="将文本转换为语音音频,完全兼容OpenAI TTS API格式",
+    response_description="音频文件流",
+    responses={
+        200: {
+            "description": "成功生成音频",
+            "content": {
+                "audio/mpeg": {},
+                "audio/opus": {},
+                "audio/aac": {},
+                "audio/flac": {},
+                "audio/wav": {},
+                "audio/pcm": {}
+            }
+        },
+        401: {
+            "description": "认证失败",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "error": {
+                            "message": "无效的API密钥",
+                            "type": "authentication_error",
+                            "code": "invalid_api_key"
+                        }
+                    }
+                }
+            }
+        },
+        400: {
+            "description": "请求参数错误",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "error": {
+                            "message": "输入文本不能为空",
+                            "type": "invalid_request_error",
+                            "code": "validation_error"
+                        }
+                    }
+                }
+            }
+        }
+    }
+)
 async def create_speech(
     request: OpenAISpeechRequest,
     _: None = Depends(verify_api_key)
 ):
     """OpenAI兼容的TTS端点
     
-    生成语音音频from输入文本
+    将输入文本转换为语音音频,支持多种音色、语速和音频格式。
+    
+    ## 认证
+    
+    如果启用了API密钥认证(`ENABLE_API_KEY_AUTH=true`),需要在请求头中提供Bearer token:
+    
+    ```
+    Authorization: Bearer your-api-key
+    ```
+    
+    ## 参数说明
+    
+    - **model**: TTS模型,支持 `tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`
+    - **input**: 待转换的文本(1-4096字符)
+    - **voice**: 音色选择,支持11种音色:
+      - `alloy` - 中性音色
+      - `ash` - 男声
+      - `ballad` - 女声(双快思思)
+      - `coral` - 女声(甜美)
+      - `echo` - 男声
+      - `fable` - 女声(清新)
+      - `onyx` - 男声(温暖)
+      - `nova` - 女声(毛毛)
+      - `sage` - 男声(广西)
+      - `shimmer` - 女声(悦文)
+      - `verse` - 男声(说唱)
+    - **response_format**: 音频格式,支持 `mp3`, `opus`, `aac`, `flac`, `wav`, `pcm` (默认: mp3)
+    - **speed**: 语速倍率,范围 0.25-4.0 (默认: 1.0)
+    
+    ## 示例
+    
+    ```bash
+    curl -X POST http://localhost:9001/v1/audio/speech \\
+      -H "Content-Type: application/json" \\
+      -H "Authorization: Bearer your-api-key" \\
+      -d '{
+        "model": "gpt-4o-mini-tts",
+        "input": "你好,欢迎使用豆包TTS服务",
+        "voice": "alloy",
+        "speed": 1.0,
+        "response_format": "mp3"
+      }' \\
+      --output speech.mp3
+    ```
     
     Args:
         request: OpenAI格式的TTS请求
