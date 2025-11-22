@@ -3,9 +3,7 @@
 定义豆包V3 API的数据结构
 """
 from pydantic import BaseModel, Field
-from typing import Optional, List
-import uuid
-
+from typing import Optional
 
 class DoubaoV3User(BaseModel):
     """V3用户信息"""

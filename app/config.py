@@ -58,10 +58,32 @@ class Settings(BaseSettings):
     VOICE_MAPPING_SHIMMER: Optional[str] = None
     VOICE_MAPPING_VERSE: Optional[str] = None
     
+    # ============================================
+    # API密钥认证配置 (可选)
+    # ============================================
+    # 是否启用API密钥认证
+    ENABLE_API_KEY_AUTH: bool = False
+    
+    # API密钥列表 (逗号分隔多个密钥)
+    # 格式: key1,key2,key3
+    # 示例: sk-abc123,sk-def456
+    API_KEYS: Optional[str] = None
+    
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = True
+    
+    def get_api_keys(self) -> set[str]:
+        """获取API密钥集合
+        
+        Returns:
+            set[str]: API密钥集合,空集表示未配置
+        """
+        if not self.API_KEYS:
+            return set()
+        # 分割密钥字符串,去除空白并过滤空值
+        return {key.strip() for key in self.API_KEYS.split(",") if key.strip()}
 
 
 # 全局配置实例

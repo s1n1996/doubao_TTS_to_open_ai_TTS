@@ -2,19 +2,23 @@
 
 实现OpenAI兼容的/v1/audio/speech端点
 """
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import StreamingResponse
 from app.models.openai_models import OpenAISpeechRequest
 from app.services.converter import converter
 from app.services.doubao_client import doubao_client
 from app.utils.errors import TTSProxyError, format_error_response
 from app.utils.logger import logger
+from app.middleware.auth import verify_api_key
 
 router = APIRouter(prefix="/v1/audio", tags=["Audio"])
 
 
 @router.post("/speech")
-async def create_speech(request: OpenAISpeechRequest):
+async def create_speech(
+    request: OpenAISpeechRequest,
+    _: None = Depends(verify_api_key)
+):
     """OpenAI兼容的TTS端点
     
     生成语音音频from输入文本

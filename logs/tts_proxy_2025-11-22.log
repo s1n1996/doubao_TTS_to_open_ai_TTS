@@ -1177,3 +1177,132 @@
 2025-11-22 14:48:38 | INFO     | app.main:lifespan:30 - TTS Proxy 关闭中...
 2025-11-22 14:48:38 | INFO     | app.services.doubao_client:close:190 - 豆包HTTP客户端已关闭
 2025-11-22 14:48:38 | INFO     | app.main:lifespan:32 - TTS Proxy 已关闭
+2025-11-22 14:58:32 | INFO     | app.main:lifespan:21 - ==================================================
+2025-11-22 14:58:32 | INFO     | app.main:lifespan:22 - TTS Proxy 启动中...
+2025-11-22 14:58:32 | INFO     | app.main:lifespan:23 - 服务地址: 0.0.0.0:9001
+2025-11-22 14:58:32 | INFO     | app.main:lifespan:24 - 日志级别: DEBUG
+2025-11-22 14:58:32 | INFO     | app.main:lifespan:25 - API文档: http://0.0.0.0:9001/docs
+2025-11-22 14:58:32 | INFO     | app.main:lifespan:26 - ==================================================
+2025-11-22 14:58:38 | INFO     | app.routes.audio:create_speech:36 - 收到TTS请求: model=tts-1, voice=alloy, text_length=11, format=mp3
+2025-11-22 14:58:38 | INFO     | app.services.doubao_client:synthesize_http:65 - 发起豆包V3 TTS请求: speaker=zh_female_meilinvyou_moon_bigtts, text_length=11
+2025-11-22 14:58:38 | DEBUG    | app.services.doubao_client:synthesize_http:70 - 请求Headers: X-Api-App-Id=3482856583, X-Api-Resource-Id=seed-tts-1.0, X-Api-Access-Key=6OU5lKJxjl...
+2025-11-22 14:58:38 | DEBUG    | app.services.doubao_client:synthesize_http:75 - 请求参数: format=mp3, speech_rate=0
+2025-11-22 14:58:38 | DEBUG    | app.services.doubao_client:synthesize_http:79 - 请求Body: {'user': {'uid': 'default_user'}, 'req_params': {'text': '测试API密钥认证功能', 'speaker': 'zh_female_meilinvyou_moon_bigtts', 'audio_params': {'format': 'mp3', 'sample_rate': 24000, 'bit_rate': 160, 'speech_rate': 0}}}
+2025-11-22 14:58:40 | INFO     | app.services.doubao_client:synthesize_http:91 - 豆包V3响应: logid=20251123035841EC80C661E2AFFF0517BE, status=200
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1389 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1728 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 384 bytes
+2025-11-22 14:58:41 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1152 bytes
+2025-11-22 14:58:41 | INFO     | app.services.doubao_client:synthesize_http:140 - 音频合成完成
+2025-11-22 14:58:41 | INFO     | app.services.doubao_client:synthesize_http:159 - 音频合成成功: 总大小=26733 bytes, 块数=15
+2025-11-22 14:59:34 | INFO     | app.main:lifespan:30 - TTS Proxy 关闭中...
+2025-11-22 14:59:34 | INFO     | app.services.doubao_client:close:190 - 豆包HTTP客户端已关闭
+2025-11-22 14:59:34 | INFO     | app.main:lifespan:32 - TTS Proxy 已关闭
+2025-11-22 14:59:38 | INFO     | app.main:lifespan:21 - ==================================================
+2025-11-22 14:59:38 | INFO     | app.main:lifespan:22 - TTS Proxy 启动中...
+2025-11-22 14:59:38 | INFO     | app.main:lifespan:23 - 服务地址: 0.0.0.0:9001
+2025-11-22 14:59:38 | INFO     | app.main:lifespan:24 - 日志级别: DEBUG
+2025-11-22 14:59:38 | INFO     | app.main:lifespan:25 - API文档: http://0.0.0.0:9001/docs
+2025-11-22 14:59:38 | INFO     | app.main:lifespan:26 - ==================================================
+2025-11-22 14:59:45 | WARNING  | app.middleware.auth:verify_api_key:34 - API密钥认证已启用但未配置任何密钥
+2025-11-22 15:00:23 | INFO     | app.main:lifespan:30 - TTS Proxy 关闭中...
+2025-11-22 15:00:23 | INFO     | app.main:lifespan:32 - TTS Proxy 已关闭
+2025-11-22 15:00:28 | INFO     | app.main:lifespan:21 - ==================================================
+2025-11-22 15:00:28 | INFO     | app.main:lifespan:22 - TTS Proxy 启动中...
+2025-11-22 15:00:28 | INFO     | app.main:lifespan:23 - 服务地址: 0.0.0.0:9001
+2025-11-22 15:00:28 | INFO     | app.main:lifespan:24 - 日志级别: DEBUG
+2025-11-22 15:00:28 | INFO     | app.main:lifespan:25 - API文档: http://0.0.0.0:9001/docs
+2025-11-22 15:00:28 | INFO     | app.main:lifespan:26 - ==================================================
+2025-11-22 15:00:32 | WARNING  | app.middleware.auth:verify_api_key:63 - 无效的API密钥: sk-wrong-k...
+2025-11-22 15:00:32 | DEBUG    | app.middleware.auth:verify_api_key:76 - API密钥验证成功: sk-test123...
+2025-11-22 15:00:32 | INFO     | app.routes.audio:create_speech:36 - 收到TTS请求: model=tts-1, voice=alloy, text_length=11, format=mp3
+2025-11-22 15:00:32 | INFO     | app.services.doubao_client:synthesize_http:65 - 发起豆包V3 TTS请求: speaker=zh_female_meilinvyou_moon_bigtts, text_length=11
+2025-11-22 15:00:32 | DEBUG    | app.services.doubao_client:synthesize_http:70 - 请求Headers: X-Api-App-Id=3482856583, X-Api-Resource-Id=seed-tts-1.0, X-Api-Access-Key=6OU5lKJxjl...
+2025-11-22 15:00:32 | DEBUG    | app.services.doubao_client:synthesize_http:75 - 请求参数: format=mp3, speech_rate=0
+2025-11-22 15:00:32 | DEBUG    | app.services.doubao_client:synthesize_http:79 - 请求Body: {'user': {'uid': 'default_user'}, 'req_params': {'text': '测试API密钥认证功能', 'speaker': 'zh_female_meilinvyou_moon_bigtts', 'audio_params': {'format': 'mp3', 'sample_rate': 24000, 'bit_rate': 160, 'speech_rate': 0}}}
+2025-11-22 15:00:35 | INFO     | app.services.doubao_client:synthesize_http:91 - 豆包V3响应: logid=202511230400352F14964E17738A382569, status=200
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1389 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1728 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:35 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:36 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:36 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 192 bytes
+2025-11-22 15:00:36 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1152 bytes
+2025-11-22 15:00:36 | INFO     | app.services.doubao_client:synthesize_http:140 - 音频合成完成
+2025-11-22 15:00:36 | INFO     | app.services.doubao_client:synthesize_http:159 - 音频合成成功: 总大小=26733 bytes, 块数=15
+2025-11-22 15:00:36 | DEBUG    | app.middleware.auth:verify_api_key:76 - API密钥验证成功: sk-test123...
+2025-11-22 15:00:36 | INFO     | app.routes.audio:create_speech:36 - 收到TTS请求: model=tts-1, voice=alloy, text_length=11, format=mp3
+2025-11-22 15:00:36 | INFO     | app.services.doubao_client:synthesize_http:65 - 发起豆包V3 TTS请求: speaker=zh_female_meilinvyou_moon_bigtts, text_length=11
+2025-11-22 15:00:36 | DEBUG    | app.services.doubao_client:synthesize_http:70 - 请求Headers: X-Api-App-Id=3482856583, X-Api-Resource-Id=seed-tts-1.0, X-Api-Access-Key=6OU5lKJxjl...
+2025-11-22 15:00:36 | DEBUG    | app.services.doubao_client:synthesize_http:75 - 请求参数: format=mp3, speech_rate=0
+2025-11-22 15:00:36 | DEBUG    | app.services.doubao_client:synthesize_http:79 - 请求Body: {'user': {'uid': 'default_user'}, 'req_params': {'text': '测试API密钥认证功能', 'speaker': 'zh_female_meilinvyou_moon_bigtts', 'audio_params': {'format': 'mp3', 'sample_rate': 24000, 'bit_rate': 160, 'speech_rate': 0}}}
+2025-11-22 15:00:36 | INFO     | app.services.doubao_client:synthesize_http:91 - 豆包V3响应: logid=2025112304003650C6B369BB5B47315324, status=200
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1389 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1728 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 192 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1728 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 192 bytes
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1152 bytes
+2025-11-22 15:00:37 | INFO     | app.services.doubao_client:synthesize_http:140 - 音频合成完成
+2025-11-22 15:00:37 | INFO     | app.services.doubao_client:synthesize_http:159 - 音频合成成功: 总大小=28269 bytes, 块数=17
+2025-11-22 15:00:37 | DEBUG    | app.middleware.auth:verify_api_key:76 - API密钥验证成功: sk-test456...
+2025-11-22 15:00:37 | INFO     | app.routes.audio:create_speech:36 - 收到TTS请求: model=tts-1, voice=alloy, text_length=11, format=mp3
+2025-11-22 15:00:37 | INFO     | app.services.doubao_client:synthesize_http:65 - 发起豆包V3 TTS请求: speaker=zh_female_meilinvyou_moon_bigtts, text_length=11
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:70 - 请求Headers: X-Api-App-Id=3482856583, X-Api-Resource-Id=seed-tts-1.0, X-Api-Access-Key=6OU5lKJxjl...
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:75 - 请求参数: format=mp3, speech_rate=0
+2025-11-22 15:00:37 | DEBUG    | app.services.doubao_client:synthesize_http:79 - 请求Body: {'user': {'uid': 'default_user'}, 'req_params': {'text': '测试API密钥认证功能', 'speaker': 'zh_female_meilinvyou_moon_bigtts', 'audio_params': {'format': 'mp3', 'sample_rate': 24000, 'bit_rate': 160, 'speech_rate': 0}}}
+2025-11-22 15:00:38 | INFO     | app.services.doubao_client:synthesize_http:91 - 豆包V3响应: logid=2025112304003843A8201676795535A037, status=200
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1389 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1728 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 192 bytes
+2025-11-22 15:00:38 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1920 bytes
+2025-11-22 15:00:39 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 2112 bytes
+2025-11-22 15:00:39 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 192 bytes
+2025-11-22 15:00:39 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 192 bytes
+2025-11-22 15:00:39 | DEBUG    | app.services.doubao_client:synthesize_http:137 - 收到音频块: 1152 bytes
+2025-11-22 15:00:39 | INFO     | app.services.doubao_client:synthesize_http:140 - 音频合成完成
+2025-11-22 15:00:39 | INFO     | app.services.doubao_client:synthesize_http:159 - 音频合成成功: 总大小=30957 bytes, 块数=19
+2025-11-22 15:01:06 | INFO     | app.main:lifespan:30 - TTS Proxy 关闭中...
+2025-11-22 15:01:06 | INFO     | app.services.doubao_client:close:190 - 豆包HTTP客户端已关闭
+2025-11-22 15:01:06 | INFO     | app.main:lifespan:32 - TTS Proxy 已关闭
