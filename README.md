@@ -68,19 +68,13 @@ StreamingResponse → Client (audio bytes)
 git clone <your-fork-or-original-repo> doubao-tts-proxy
 cd doubao-tts-proxy
 
-# 2. 创建并激活虚拟环境
-python3.13 -m venv .venv
-source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+# 2. 使用uv虚拟环境
+uv sync
 
-# 3. 安装依赖
-pip install -r requirements.txt  # 或 pip install -e . 若使用 pyproject 配置
-
-# 4. 配置环境变量
+# 3. 配置环境变量(必要)
 cp .env.example .env
 # 根据实际凭证修改 .env
 ```
-> **提示**：若使用 `uv`/`pip-tools`，可直接读取根目录 `uv.lock`。
-
 ---
 
 ## 5. 配置说明
@@ -122,22 +116,21 @@ cp .env.example .env
 | `sage` | `zh_male_guangxi_mars_bigtts` | 广西男声 |
 | `shimmer` | `zh_female_yuewen_mars_bigtts` | 悦文女声 |
 | `verse` | `zh_male_rap_mars_bigtts` | 说唱男声 |
-> 在 `.env` 中设置 `VOICE_MAPPING_<VOICE>=your_speaker_id` 可覆盖默认值。
+> 在 `.env` 中设置 `VOICE_MAPPING_<VOICE>=your_speaker_id` 可覆盖默认值。更多的音色选择可在官方文档和火山引擎的控制台中选查看
 
 ### 5.3 API Key 认证
+用户可以开启权限认证服务（默认关闭），流程如下：
 1. 设置 `ENABLE_API_KEY_AUTH=true`。
 2. 指定 `API_KEYS=sk-foo,sk-bar`。
 3. 客户端请求需携带 `Authorization: Bearer sk-foo`。
-
+> 若部署在云端建议开启该功能，并使用高强的的密钥，例如UUID
 ---
 
 ## 6. 快速开始
 
 ### 6.1 启动服务
 ```bash
-uvicorn app.main:app --host ${SERVER_HOST:-0.0.0.0} --port ${SERVER_PORT:-9001}
-# 或
-python -m uvicorn app.main:app --reload
+uv run uvicorn app.main:app --host ${SERVER_HOST:-0.0.0.0} --port ${SERVER_PORT:-9001}
 ```
 
 ### 6.2 健康检查
@@ -192,9 +185,9 @@ with open("speech.wav", "wb") as f:
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | `tts-1` \| `tts-1-hd` \| `gpt-4o-mini-tts` | ✅ | 客户端透传，便于兼容 OpenAI SDK |
+| `model` | `tts-1` \| `tts-1-hd` \| `gpt-4o-mini-tts` | ✅ | 全部都会映射至`.env`中用户配置的豆包语音模型 |
 | `input` | `string` (1-4096) | ✅ | 待合成文本 |
-| `voice` | 详见上表 | ✅ | 11 种预设音色 |
+| `voice` | 详见上表 | ✅ | 11 种预设音色，可在`.env`中自行配置修改 |
 | `response_format` | `mp3`/`opus`/`aac`/`flac`/`wav`/`pcm` | ⭕ | 默认 `mp3` |
 | `speed` | `float` (0.25~4.0) | ⭕ | 映射到 Doubao -50~100 语速 |
 | `instructions` | `string` | ⭕ | 预留（暂未生效） |
@@ -203,7 +196,7 @@ with open("speech.wav", "wb") as f:
 **响应**：`audio/*` 流（根据 `response_format` 自动设置 `Content-Type`），并携带 `Content-Disposition: attachment; filename="speech.{fmt}"`。
 
 ### 7.2 支持模型、音色与格式
-- **模型**：`tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`（配置中可扩展）。
+- **模型**：`tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`
 - **音色**：`alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`。
 - **格式**：`mp3`, `opus` (映射为 `ogg_opus`), `aac`, `flac`, `wav`, `pcm`。
 
@@ -242,7 +235,7 @@ tests/test_converter.py
 
 ### 8.2 运行测试
 ```bash
-pytest tests -q
+uv run pytest tests -q
 ```
 > 当前测试覆盖参数转换逻辑，可据此扩展更多单元/集成测试。
 
@@ -267,13 +260,3 @@ pytest tests -q
 - 在高并发场景下调大 `HTTP_POOL_LIMITS`，并使用更高性能的机器。
 - 关闭 `ENABLE_REQUEST_LOGGING` / `ENABLE_DETAILED_ERRORS` 以降低日志开销。
 - 利用前置缓存或队列削峰。
-
----
-
-## 10. 贡献与支持
-- **贡献流程**：Fork → 创建分支 → 提交修改 → 发起 Pull Request。建议附带测试与文档更新。
-- **问题反馈**：通过仓库 Issues 提交使用问题或功能请求。
-- **许可证**：当前仓库未附带明确的 License，请在生产使用前确认并补充合适的授权条款。
-- **支持渠道**：可在 Issue 中 @maintainer，或按照团队既定沟通方式联系。
-
-欢迎贡献更多音色映射、错误处理与流式播放能力，一起完善豆包 TTS 的 OpenAI 生态体验！
