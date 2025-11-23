@@ -130,7 +130,7 @@ cp .env.example .env
 
 ### 6.1 启动服务
 ```bash
-uv run uvicorn app.main:app --host ${SERVER_HOST:-0.0.0.0} --port ${SERVER_PORT:-9001}
+uv run uvicorn app.main:app --host 0.0.0.0 --port 9001
 ```
 
 ### 6.2 健康检查
