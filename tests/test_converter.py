@@ -6,7 +6,7 @@ import os
 os.environ["DOUBAO_APPID"] = "test_appid"
 os.environ["DOUBAO_ACCESS_TOKEN"] = "test_token"
 
-from app.services.converter import ParameterConverter, converter
+from app.services.converter import ParameterConverter
 from app.models.openai_models import OpenAISpeechRequest
 
 

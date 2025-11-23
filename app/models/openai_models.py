@@ -2,11 +2,22 @@
 
 定义OpenAI兼容的TTS API数据模型
 """
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import Literal, Optional
 
 
 class OpenAISpeechRequest(BaseModel):
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "model": "gpt-4o-mini-tts",
+                "input": "你好,我是豆包语音助手",
+                "voice": "alloy",
+                "speed": 1.0,
+                "response_format": "mp3"
+            }
+        }
+    )
     """OpenAI TTS API 请求模型
     
     完全兼容OpenAI /v1/audio/speech API规范
@@ -74,16 +85,6 @@ class OpenAISpeechRequest(BaseModel):
         # V3 API无文本长度限制,移除1024字节检查
         return v
     
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "model": "gpt-4o-mini-tts",
-                "input": "你好,我是豆包语音助手",
-                "voice": "alloy",
-                "speed": 1.0,
-                "response_format": "mp3"
-            }
-        }
 
 
 __all__ = ["OpenAISpeechRequest"]

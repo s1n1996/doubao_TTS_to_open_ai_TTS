@@ -3,10 +3,16 @@
 使用pydantic-settings从环境变量加载配置
 """
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 from typing import Optional
 
 
 class Settings(BaseSettings):
+    model_config = ConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=True
+    )
     """应用配置类"""
     
     # ============================================
@@ -68,11 +74,6 @@ class Settings(BaseSettings):
     # 格式: key1,key2,key3
     # 示例: sk-abc123,sk-def456
     API_KEYS: Optional[str] = None
-    
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        case_sensitive = True
     
     def get_api_keys(self) -> set[str]:
         """获取API密钥集合
