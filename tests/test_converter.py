@@ -1,6 +1,5 @@
 """参数转换器测试模块"""
 import pytest
-import sys
 import os
 
 # 设置环境变量供测试使用
@@ -34,19 +33,19 @@ class TestParameterConverter:
         assert result == "zh_female_cancan_mars_bigtts"  # 默认为alloy
     
     def test_speed_mapping_normal(self):
-        """测试正常语速映射"""
-        assert self.converter.map_speed(1.0) == 1.0
-        assert self.converter.map_speed(0.5) == 0.5
-        assert self.converter.map_speed(1.5) == 1.5
+        """测试正常语速映射到V3格式"""
+        assert self.converter.map_speed_to_v3(1.0) == 0  # 1.0 -> 0 (正常速度)
+        assert self.converter.map_speed_to_v3(0.5) == -50  # 0.5 -> -50
+        assert self.converter.map_speed_to_v3(1.5) == 50  # 1.5 -> 50
     
     def test_speed_mapping_exceed_max(self):
         """测试超过最大值的语速映射"""
-        assert self.converter.map_speed(3.0) == 2.0  # 限制为2.0
-        assert self.converter.map_speed(4.0) == 2.0
+        assert self.converter.map_speed_to_v3(3.0) == 100  # 限制为100
+        assert self.converter.map_speed_to_v3(4.0) == 100  # 限制为100
     
     def test_speed_mapping_below_min(self):
         """测试低于最小值的语速映射"""
-        assert self.converter.map_speed(0.05) == 0.1  # 限制为0.1
+        assert self.converter.map_speed_to_v3(0.25) == -50  # 限制为-50 (最小值)
     
     def test_format_mapping(self):
         """测试格式映射"""
@@ -73,11 +72,11 @@ class TestParameterConverter:
         
         doubao_req = self.converter.convert(openai_req)
         
-        assert doubao_req.request.text == "测试文本"
-        assert doubao_req.audio.voice_type == "zh_female_cancan_mars_bigtts"
-        assert doubao_req.audio.speed_ratio == 1.5
-        assert doubao_req.audio.encoding == "mp3"
-        assert doubao_req.app.appid == "test_appid"
+        assert doubao_req.req_params.text == "测试文本"
+        assert doubao_req.req_params.speaker == "zh_female_cancan_mars_bigtts"
+        assert doubao_req.req_params.audio_params.speech_rate == 50  # 1.5 -> (1.5-1.0)*100 = 50
+        assert doubao_req.req_params.audio_params.format == "mp3"
+        assert doubao_req.user.uid == "default_user"
 
 
 if __name__ == "__main__":
