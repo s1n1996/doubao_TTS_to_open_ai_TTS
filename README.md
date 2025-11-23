@@ -81,41 +81,41 @@ cp .env.example .env
 项目使用 `pydantic-settings` 从 `.env` 及系统环境变量读取配置。
 
 ### 5.1 环境变量速查表
-| 变量 | 描述 | 必填 | 默认值 |
-| --- | --- | --- | --- |
-| `DOUBAO_APPID` | 豆包应用 ID | ✅ | - |
-| `DOUBAO_ACCESS_TOKEN` | 豆包访问令牌 | ✅ | - |
-| `DOUBAO_RESOURCE_ID` | V3 资源/模型 ID | ⭕ | `seed-tts-2.0` |
-| `DOUBAO_HTTP_URL` | 豆包 HTTP 流式端点 | ⭕ | `https://openspeech.bytedance.com/api/v3/tts/unidirectional` |
-| `DOUBAO_WS_URL` | 豆包 WebSocket 端点（预留） | ⭕ | `wss://openspeech.bytedance.com/api/v3/tts/unidirectional/stream` |
-| `SERVER_HOST` | 服务监听地址 | ⭕ | `0.0.0.0` |
-| `SERVER_PORT` | 服务端口 | ⭕ | `9001` |
-| `LOG_LEVEL` | 日志级别 (`DEBUG/INFO/...`) | ⭕ | `INFO` |
-| `MAX_CONCURRENT_REQUESTS` | 最大并发（预留） | ⭕ | `10` |
-| `REQUEST_TIMEOUT` | Doubao HTTP 超时时间（秒） | ⭕ | `30` |
-| `HTTP_POOL_LIMITS` | httpx 最大连接数 | ⭕ | `100` |
-| `ENABLE_REQUEST_LOGGING` | 是否记录详细请求 | ⭕ | `true` |
-| `ENABLE_DETAILED_ERRORS` | 是否暴露详细错误 | ⭕ | `true` |
-| `DEFAULT_SAMPLE_RATE` | 默认采样率 | ⭕ | `24000` |
-| `DEFAULT_BITRATE` | MP3 比特率 (kbps) | ⭕ | `160` |
-| `ENABLE_API_KEY_AUTH` | 开启 Bearer Token 认证 | ⭕ | `false` |
-| `API_KEYS` | 逗号分隔的 API key 列表 | ⭕ | `None` |
-| `VOICE_MAPPING_*` | 自定义 OpenAI voice → 豆包 speaker | ⭕ | `None`（使用默认映射） |
+| 变量                      | 描述                               | 必填 | 默认值                                                            |
+| ------------------------- | ---------------------------------- | ---- | ----------------------------------------------------------------- |
+| `DOUBAO_APPID`            | 豆包应用 ID                        | ✅    | -                                                                 |
+| `DOUBAO_ACCESS_TOKEN`     | 豆包访问令牌                       | ✅    | -                                                                 |
+| `DOUBAO_RESOURCE_ID`      | V3 资源/模型 ID                    | ⭕    | `seed-tts-2.0`                                                    |
+| `DOUBAO_HTTP_URL`         | 豆包 HTTP 流式端点                 | ⭕    | `https://openspeech.bytedance.com/api/v3/tts/unidirectional`      |
+| `DOUBAO_WS_URL`           | 豆包 WebSocket 端点（预留）        | ⭕    | `wss://openspeech.bytedance.com/api/v3/tts/unidirectional/stream` |
+| `SERVER_HOST`             | 服务监听地址                       | ⭕    | `0.0.0.0`                                                         |
+| `SERVER_PORT`             | 服务端口                           | ⭕    | `9001`                                                            |
+| `LOG_LEVEL`               | 日志级别 (`DEBUG/INFO/...`)        | ⭕    | `INFO`                                                            |
+| `MAX_CONCURRENT_REQUESTS` | 最大并发（预留）                   | ⭕    | `10`                                                              |
+| `REQUEST_TIMEOUT`         | Doubao HTTP 超时时间（秒）         | ⭕    | `30`                                                              |
+| `HTTP_POOL_LIMITS`        | httpx 最大连接数                   | ⭕    | `100`                                                             |
+| `ENABLE_REQUEST_LOGGING`  | 是否记录详细请求                   | ⭕    | `true`                                                            |
+| `ENABLE_DETAILED_ERRORS`  | 是否暴露详细错误                   | ⭕    | `true`                                                            |
+| `DEFAULT_SAMPLE_RATE`     | 默认采样率                         | ⭕    | `24000`                                                           |
+| `DEFAULT_BITRATE`         | MP3 比特率 (kbps)                  | ⭕    | `160`                                                             |
+| `ENABLE_API_KEY_AUTH`     | 开启 Bearer Token 认证             | ⭕    | `false`                                                           |
+| `API_KEYS`                | 逗号分隔的 API key 列表            | ⭕    | `None`                                                            |
+| `VOICE_MAPPING_*`         | 自定义 OpenAI voice → 豆包 speaker | ⭕    | `None`（使用默认映射）                                            |
 
 ### 5.2 声音映射（默认值）
-| OpenAI Voice | Doubao Speaker ID | 描述 |
-| --- | --- | --- |
-| `alloy` | `zh_female_cancan_mars_bigtts` | 中性女声 |
-| `ash` | `zh_male_M392_conversation_wvae_bigtts` | 男声 |
-| `ballad` | `zh_female_shuangkuaisisi_moon_bigtts` | 女声（双快思思） |
-| `coral` | `zh_female_tianmei_mars_bigtts` | 甜美女声 |
-| `echo` | `zh_male_M359_conversation_wvae_bigtts` | 男声 |
-| `fable` | `zh_female_qingxin_mars_bigtts` | 清新女声 |
-| `onyx` | `zh_male_wennuanahu_moon_bigtts` | 温暖男声 |
-| `nova` | `zh_female_maomao_mars_bigtts` | 毛毛女声 |
-| `sage` | `zh_male_guangxi_mars_bigtts` | 广西男声 |
-| `shimmer` | `zh_female_yuewen_mars_bigtts` | 悦文女声 |
-| `verse` | `zh_male_rap_mars_bigtts` | 说唱男声 |
+| OpenAI Voice | Doubao Speaker ID                       | 描述             |
+| ------------ | --------------------------------------- | ---------------- |
+| `alloy`      | `zh_female_cancan_mars_bigtts`          | 中性女声         |
+| `ash`        | `zh_male_M392_conversation_wvae_bigtts` | 男声             |
+| `ballad`     | `zh_female_shuangkuaisisi_moon_bigtts`  | 女声（双快思思） |
+| `coral`      | `zh_female_tianmei_mars_bigtts`         | 甜美女声         |
+| `echo`       | `zh_male_M359_conversation_wvae_bigtts` | 男声             |
+| `fable`      | `zh_female_qingxin_mars_bigtts`         | 清新女声         |
+| `onyx`       | `zh_male_wennuanahu_moon_bigtts`        | 温暖男声         |
+| `nova`       | `zh_female_maomao_mars_bigtts`          | 毛毛女声         |
+| `sage`       | `zh_male_guangxi_mars_bigtts`           | 广西男声         |
+| `shimmer`    | `zh_female_yuewen_mars_bigtts`          | 悦文女声         |
+| `verse`      | `zh_male_rap_mars_bigtts`               | 说唱男声         |
 > 在 `.env` 中设置 `VOICE_MAPPING_<VOICE>=your_speaker_id` 可覆盖默认值。更多的音色选择可在官方文档和火山引擎的控制台中选查看
 
 ### 5.3 API Key 认证
@@ -132,6 +132,7 @@ cp .env.example .env
 ```bash
 uv run uvicorn app.main:app --host 0.0.0.0 --port 9001
 ```
+> 若需通过nginx进行反向代理，则需添加root_path参数
 
 ### 6.2 健康检查
 ```bash
@@ -183,15 +184,15 @@ with open("speech.wav", "wb") as f:
 - **Content-Type**：`application/json`
 - **认证**：可选 Bearer Token。
 
-| 字段 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| `model` | `tts-1` \| `tts-1-hd` \| `gpt-4o-mini-tts` | ✅ | 全部都会映射至`.env`中用户配置的豆包语音模型 |
-| `input` | `string` (1-4096) | ✅ | 待合成文本 |
-| `voice` | 详见上表 | ✅ | 11 种预设音色，可在`.env`中自行配置修改 |
-| `response_format` | `mp3`/`opus`/`aac`/`flac`/`wav`/`pcm` | ⭕ | 默认 `mp3` |
-| `speed` | `float` (0.25~4.0) | ⭕ | 映射到 Doubao -50~100 语速 |
-| `instructions` | `string` | ⭕ | 预留（暂未生效） |
-| `stream_format` | `sse`/`audio` | ⭕ | 目前统一走音频流 |
+| 字段              | 类型                                       | 必填 | 说明                                         |
+| ----------------- | ------------------------------------------ | ---- | -------------------------------------------- |
+| `model`           | `tts-1` \| `tts-1-hd` \| `gpt-4o-mini-tts` | ✅    | 全部都会映射至`.env`中用户配置的豆包语音模型 |
+| `input`           | `string` (1-4096)                          | ✅    | 待合成文本                                   |
+| `voice`           | 详见上表                                   | ✅    | 11 种预设音色，可在`.env`中自行配置修改      |
+| `response_format` | `mp3`/`opus`/`aac`/`flac`/`wav`/`pcm`      | ⭕    | 默认 `mp3`                                   |
+| `speed`           | `float` (0.25~4.0)                         | ⭕    | 映射到 Doubao -50~100 语速                   |
+| `instructions`    | `string`                                   | ⭕    | 预留（暂未生效）                             |
+| `stream_format`   | `sse`/`audio`                              | ⭕    | 目前统一走音频流                             |
 
 **响应**：`audio/*` 流（根据 `response_format` 自动设置 `Content-Type`），并携带 `Content-Disposition: attachment; filename="speech.{fmt}"`。
 
@@ -201,16 +202,16 @@ with open("speech.wav", "wb") as f:
 - **格式**：`mp3`, `opus` (映射为 `ogg_opus`), `aac`, `flac`, `wav`, `pcm`。
 
 ### 7.3 错误映射（关键示例）
-| Doubao Code | HTTP 状态 | OpenAI `type` | 说明 |
-| --- | --- | --- | --- |
-| `3001` | 400 | `invalid_request_error` | 参数非法/缺失 |
-| `3003` | 429 | `rate_limit_error` | 并发超限 |
-| `3005` | 503 | `service_unavailable` | 服务繁忙 |
-| `3010/3011` | 400 | `invalid_request_error` | 文本超长/无效 |
-| `3030/3032` | 504 | `timeout_error` | Doubao 处理或等待超时 |
-| `3031/3040` | 500 | `api_error` | 音频为空/连接错误 |
-| `3050` | 400 | `invalid_request_error` | 音色不存在 |
-| `20000000` | 200 | `success` | 完成信号（内部使用） |
+| Doubao Code | HTTP 状态 | OpenAI `type`           | 说明                  |
+| ----------- | --------- | ----------------------- | --------------------- |
+| `3001`      | 400       | `invalid_request_error` | 参数非法/缺失         |
+| `3003`      | 429       | `rate_limit_error`      | 并发超限              |
+| `3005`      | 503       | `service_unavailable`   | 服务繁忙              |
+| `3010/3011` | 400       | `invalid_request_error` | 文本超长/无效         |
+| `3030/3032` | 504       | `timeout_error`         | Doubao 处理或等待超时 |
+| `3031/3040` | 500       | `api_error`             | 音频为空/连接错误     |
+| `3050`      | 400       | `invalid_request_error` | 音色不存在            |
+| `20000000`  | 200       | `success`               | 完成信号（内部使用）  |
 > 其他错误会回退到 `500 api_error`，并返回 `{"error": {"message": ..., "code": "doubao_<code>"}}`。
 
 ---
@@ -247,14 +248,14 @@ uv run pytest tests -q
 ---
 
 ## 9. 常见问题与故障排除
-| 症状 | 可能原因 | 解决方案 |
-| --- | --- | --- |
-| `401 invalid_api_key` | 开启认证但未传 Bearer Token 或 token 不在 `API_KEYS` | 确认请求头 `Authorization: Bearer <key>` 与 `.env` 配置一致 |
-| `API密钥认证已启用但服务器未正确配置` | 设置了 `ENABLE_API_KEY_AUTH=true` 但 `API_KEYS` 为空 | 在 `.env` 中提供至少一个 key |
-| `HTTP 429 / rate_limit_error` | 豆包并发超限 | 降低客户端并发，或调高 `MAX_CONCURRENT_REQUESTS` 并申请更高配额 |
-| 请求超时/无音频返回 | 文本过长、网络阻塞或 `REQUEST_TIMEOUT` 太小 | 缩短文本、提高超时时间、检查网络出口 |
-| `音色不存在` | 自定义 voice 映射错误 | 在火山引擎控制台确认 speaker ID 是否可用 |
-| 日志为空 | 未创建 `logs/` 目录或无写权限 | 确保目录可写，或修改 `app/utils/logger.py` 输出设置 |
+| 症状                                  | 可能原因                                             | 解决方案                                                        |
+| ------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------- |
+| `401 invalid_api_key`                 | 开启认证但未传 Bearer Token 或 token 不在 `API_KEYS` | 确认请求头 `Authorization: Bearer <key>` 与 `.env` 配置一致     |
+| `API密钥认证已启用但服务器未正确配置` | 设置了 `ENABLE_API_KEY_AUTH=true` 但 `API_KEYS` 为空 | 在 `.env` 中提供至少一个 key                                    |
+| `HTTP 429 / rate_limit_error`         | 豆包并发超限                                         | 降低客户端并发，或调高 `MAX_CONCURRENT_REQUESTS` 并申请更高配额 |
+| 请求超时/无音频返回                   | 文本过长、网络阻塞或 `REQUEST_TIMEOUT` 太小          | 缩短文本、提高超时时间、检查网络出口                            |
+| `音色不存在`                          | 自定义 voice 映射错误                                | 在火山引擎控制台确认 speaker ID 是否可用                        |
+| 日志为空                              | 未创建 `logs/` 目录或无写权限                        | 确保目录可写，或修改 `app/utils/logger.py` 输出设置             |
 
 **性能优化建议**
 - 在高并发场景下调大 `HTTP_POOL_LIMITS`，并使用更高性能的机器。
